@@ -24,15 +24,7 @@ class Solution:
         # we will initialize prev to None as there is no previous node to the head 
         # and curr will be the head
         prev, curr = None, head
-        # now we will iterate through the loop till curr is not None
         while curr:
-            # now we need to preserve the reference to the list before changing to next pointer of current node
-            nxt = curr.next
-            # now we need to reverse the direction of the list by pointing the next of current node to previous
-            curr.next = prev
-            # now we will move the prev to next node
-            prev = curr
-            # now we will move the curr node
-            curr = nxt 
-        # after the loop is done we will return prev which will contain new head of the reversed list
+            curr.next, prev, curr = prev, curr, curr.next
         return prev
+
