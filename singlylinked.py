@@ -1,59 +1,50 @@
-# now lets write a code to implement singly linked list
-# lets define  a class for ListNode
+# lets write a code to implement a singly linked list
+# now first we will implement a ListNode
 
 class ListNode:
-
-    # define a constructor function
     def __init__(self, val):
-        # we will initialize the first listnode where it takes the value and the next pointer is set to Null
-        self.val = val
-        self.next = None
+        self.val = val # storing the value 
+        self.next = None # reference to the next node(None since it is empty now)
 
-# now lets define a linkedlist
+# now we will implement a LinkedList
 class LinkedList:
-
     def __init__(self):
-        # initializing a dummy node which makes removing the node from beginning very much easy
-        self.head = ListNode(-1)
-        self.tail = self.head
+        self.head = ListNode(-1) # we will store a arbitrary value -1 so that we can easily remove it
+        self.tail = self.head # we need to initialize tail at the same place as that of head because initially only one element
 
-    # now lets try inserting element at the end
-    def insertEnd(self, val):
-        # for inserting we need to insert the value in the next node 
-        # for this we will insert it in the next node to the tail
-        self.tail.next = ListNode(val)
-        # now after inserting we need to pass the reference to the next tail node to previous tail node to update it
-        self.tail = self.tail.next
+    # now lets insert an element in the LinkedList
+    def insert(self, val):
+        self.tail.next = ListNode(val) # we will insert val at the end of the last node i.e. creating a new node
+        self.tail = self.tail.next # now we will just update the tail pointer
 
-    # now lets try removing
+    # now lets see how to delete an element from linked list
     def delete(self, index):
-        # we will initialize a counter variable to 0 to keep track of current position
+        # we will initialize a counter variable to traverse through the list 
+        # and another variable to keep a track of the head variable
         i = 0
-        # initialize a curr variable to traverse through the list and point to current node
         curr = self.head
-        # now we will iterate through the loop till we find the exact position that is just before the position of node that is to be deleted
+        # now we need to traverse through the loop till we reach the element before the element that is to be actually removed
         while i < index and curr:
-            # we will increment the value of i to move to next target
+            # we will increment the i counter and the curr counter
             i += 1
             curr = curr.next
 
-        # now we have to remove the node ahead of the current and make sure if curr and next curr is not empty
-        if curr and curr.next:
-            # we will first check if the element to be removed is the last node
-            if curr.next == self.tail:
-                # if this condition is satisfied then the tail pointer is set to the curr pointer which means that the last one is removed
-                self.tail = curr
-            # now we have to remove the element from the list therefore we will skip the element by calling next two times
-            curr.next = curr.next.next  
+            # we will make sure if the curr and curr.next are not 'None'
+            if curr and curr.next:
+                # now we have to make sure if the element is the last node or not
+                if curr.next == self.tail:
+                    # if it is the last element then we have to set the tail to curr val
+                    self.tail = curr
+                # if it is not the last element then we will assign the next counter to the next one
+                curr.next = curr.next.next
+
+        # now lets try printing the list
+        def print(self):
+            # we will assign a value to the head 
+            curr = self.head
+            # we will run the loop till curr is not None
+            while curr:
+                print(curr.val, "->", end=" ")
+            print() 
+
     
-    # now if we want to print the Linked List
-    def print(self):
-        # now we want to access the first node in the linked list
-        # next is used because we used a dummy value of -1
-        curr = self.head.next
-        # now we will run the loop till curr is not None
-        while curr:
-            print(curr.val, " -> ", end = " ")
-            # we need to update the curr pointer to traverse
-            curr = curr.next
-        print()
