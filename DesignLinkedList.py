@@ -29,7 +29,10 @@ class MyLinkedList:
 
     def get(self, index: int) -> int:
         # now we will check if the index is within the bounds of the list otherwise we return -1
-        return self.list[index] if index < len(self.list) else -1
+        if index < len(self.list):
+            return self.list[index]
+        else:
+            return -1
         
     def addAtHead(self, val: int) -> None:
         # we will use insert() and the head will always be at 0 so we insert at 0
@@ -50,6 +53,8 @@ class MyLinkedList:
         # we will see if the index is in range
         if index in range(len(self.list)):
             self.list.pop(index) 
+
+
 
 # Your MyLinkedList object will be instantiated and called as such:
 # obj = MyLinkedList()
