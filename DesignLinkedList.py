@@ -48,10 +48,8 @@ class MyLinkedList:
         
     def deleteAtIndex(self, index: int) -> None:
         # we will see if the index is in range
-        if index <= len(self.list):
+        if index in range(len(self.list)):
             self.list.pop(index) 
-        
-
 
 # Your MyLinkedList object will be instantiated and called as such:
 # obj = MyLinkedList()
