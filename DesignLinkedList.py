@@ -49,10 +49,9 @@ class MyLinkedList:
         if index <= len(self.list):
             self.list.insert(index,val)
         
-    def deleteAtIndex(self, index: int) -> None:
-        # we will see if the index is in range
-        if index in range(len(self.list)):
-            self.list.pop(index) 
+     def deleteAtIndex(self, index: int) -> None:
+        if index < len(self.list):
+            self.list.pop(index)
 
 
 
