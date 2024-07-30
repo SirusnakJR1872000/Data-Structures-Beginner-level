@@ -39,10 +39,8 @@ class MyStack:
         
 
     def pop(self) -> int:
-        # we will run a loop till the second last place of the stack as we will be pushing the first element to the last
-        for i in range(len(self.q) - 1):
-            self.push(self.q.popleft())
-        return self.q.popleft()
+        # Assuming self.q is a deque
+        return self.q.pop() # this method removes and returns the last element from the deque, which corresponds to the top of the stack in this implementation.
         
 
     def top(self) -> int:
