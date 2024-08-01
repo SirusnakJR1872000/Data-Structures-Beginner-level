@@ -14,5 +14,5 @@ def insertionSort(arr):
             arr[j] = temp
             # now we decrement the j counter which we used to compare
             j -= 1
-        # now we can return the array
-        return arr
+    # now we can return the array
+    return arr
