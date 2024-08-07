@@ -48,6 +48,6 @@ def remove(root, val):
         
         else:
             minNode = findminimum(root.right)
-            root.val = minNode
+            root.val = minNode.val
             root.right = remove(root.right, minNode.val)
     return root
