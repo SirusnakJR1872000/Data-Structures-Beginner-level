@@ -60,3 +60,26 @@ class Heap:
             else:
                 break
         return res
+    
+    def heapify(self, arr):
+        # we will move the element on the 0th position to the last position
+        arr.append(arr[0])
+
+        self.heap = arr
+        curr = (len(self.heap) - 1) // 2
+        while curr > 0:
+            i = curr
+            while 2 * i < len(self.heap):
+                if (2 * i + 1 < len(self.heap) and self.heap[2 * i + 1] < self.heap[2 * i] and self.heap[i] > self.heap[2 * i + 1]):
+                    temp = self.heap[i]
+                    self.heap[i] = self.heap[2 * i + 1]
+                    self.heap[2 * i + 1] = temp
+                    i = 2 * i + 1
+                elif self.heap[i] > self.heap[2 * i]:
+                    temp = self.heap[i]
+                    self.heap[i] = self.heap[2 * i]
+                    self.heap[2 * i] = temp
+                    i = 2 * i
+                else:
+                    break
+            curr -= 1
